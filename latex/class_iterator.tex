@@ -1,0 +1,139 @@
+\doxysection{Iterator Class Reference}
+\hypertarget{class_iterator}{}\label{class_iterator}\index{Iterator@{Iterator}}
+
+
+\doxylink{class_iterator}{Iterator} wskazujący bieżący węzeł listy dwukierunkowej.  
+
+
+
+
+{\ttfamily \+\#include $<$Iterator.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{class_iterator_a7959a7227e71c2029fdbf1ad724ec669}{Iterator}} (\doxymbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}current=nullptr)
+\begin{DoxyCompactList}\small\item\em Tworzy iterator. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_iterator_aa92eeafc1e1868f8e5cd9f2f7f2a9054}{has\+Next}} () const
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy iterator wskazuje na węzeł dostępny przez \doxylink{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3}{next()}. \end{DoxyCompactList}\item 
+bool \doxymbox{\hyperlink{class_iterator_aa905f515e31d556e0a1534dc794751fa}{has\+Previous}} () const
+\begin{DoxyCompactList}\small\item\em Sprawdza, czy iterator wskazuje na węzeł dostępny przez \doxylink{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5}{previous()}. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3}{next}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera wartość bieżącego węzła i przesuwa iterator do przodu. \end{DoxyCompactList}\item 
+int \doxymbox{\hyperlink{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5}{previous}} ()
+\begin{DoxyCompactList}\small\item\em Pobiera wartość bieżącego węzła i przesuwa iterator do tyłu. \end{DoxyCompactList}\item 
+void \doxymbox{\hyperlink{class_iterator_a1472f6339e97195af82728033affe304}{set}} (\doxymbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}node)
+\begin{DoxyCompactList}\small\item\em Ustawia iterator na wskazanym węźle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{class_iterator}{Iterator} wskazujący bieżący węzeł listy dwukierunkowej. 
+
+\doxylink{class_iterator}{Iterator} nie zarządza pamięcią węzłów. Po usunięciu wskazywanego węzła iterator może stać się nieprawidłowy. 
+
+\label{class_iterator_doc-constructors}
+\Hypertarget{class_iterator_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_iterator_a7959a7227e71c2029fdbf1ad724ec669}\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\index{Iterator@{Iterator}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{Iterator()}{Iterator()}}
+{\footnotesize\ttfamily \label{class_iterator_a7959a7227e71c2029fdbf1ad724ec669} 
+Iterator::\+\+Iterator (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{current}{ = {\ttfamily nullptr}}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Tworzy iterator. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current} & Węzeł początkowy; domyślnie nullptr. \\
+\hline
+\end{DoxyParams}
+
+
+\label{class_iterator_doc-func-members}
+\Hypertarget{class_iterator_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_iterator_aa92eeafc1e1868f8e5cd9f2f7f2a9054}\index{Iterator@{Iterator}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}}
+{\footnotesize\ttfamily \label{class_iterator_aa92eeafc1e1868f8e5cd9f2f7f2a9054} 
+bool Iterator::\+has\+Next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Sprawdza, czy iterator wskazuje na węzeł dostępny przez \doxylink{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3}{next()}. 
+
+\begin{DoxyReturn}{Returns}
+true, jeśli istnieje bieżący węzeł. 
+\end{DoxyReturn}
+\Hypertarget{class_iterator_aa905f515e31d556e0a1534dc794751fa}\index{Iterator@{Iterator}!hasPrevious@{hasPrevious}}
+\index{hasPrevious@{hasPrevious}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{hasPrevious()}{hasPrevious()}}
+{\footnotesize\ttfamily \label{class_iterator_aa905f515e31d556e0a1534dc794751fa} 
+bool Iterator::\+has\+Previous (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Sprawdza, czy iterator wskazuje na węzeł dostępny przez \doxylink{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5}{previous()}. 
+
+\begin{DoxyReturn}{Returns}
+true, jeśli istnieje bieżący węzeł. 
+\end{DoxyReturn}
+\Hypertarget{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3}\index{Iterator@{Iterator}!next@{next}}
+\index{next@{next}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily \label{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3} 
+int Iterator::\+next (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Pobiera wartość bieżącego węzła i przesuwa iterator do przodu. 
+
+\begin{DoxyReturn}{Returns}
+Wartość bieżącego węzła. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+out\+\_\+of\+\_\+range} & Gdy iterator nie wskazuje na żaden węzeł. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5}\index{Iterator@{Iterator}!previous@{previous}}
+\index{previous@{previous}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{previous()}{previous()}}
+{\footnotesize\ttfamily \label{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5} 
+int Iterator::\+previous (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Pobiera wartość bieżącego węzła i przesuwa iterator do tyłu. 
+
+\begin{DoxyReturn}{Returns}
+Wartość bieżącego węzła. 
+\end{DoxyReturn}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std::\+out\+\_\+of\+\_\+range} & Gdy iterator nie wskazuje na żaden węzeł. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_iterator_a1472f6339e97195af82728033affe304}\index{Iterator@{Iterator}!set@{set}}
+\index{set@{set}!Iterator@{Iterator}}
+\doxysubsubsection{\texorpdfstring{set()}{set()}}
+{\footnotesize\ttfamily \label{class_iterator_a1472f6339e97195af82728033affe304} 
+void Iterator::\+set (\begin{DoxyParamCaption}\item[{\doxymbox{\hyperlink{class_node}{Node}} \texorpdfstring{$\ast$}{*}}]{node}{}\end{DoxyParamCaption})}
+
+
+
+Ustawia iterator na wskazanym węźle. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & Węzeł, na który ma wskazywać iterator; może być nullptr. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files:\begin{DoxyCompactItemize}
+\item 
+\doxymbox{\hyperlink{_iterator_8h}{Iterator.\+h}}\item 
+\doxymbox{\hyperlink{_iterator_8cpp}{Iterator.\+cpp}}\end{DoxyCompactItemize}

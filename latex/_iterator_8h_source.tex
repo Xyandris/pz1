@@ -1,0 +1,29 @@
+\doxysection{Iterator.\+h}
+\hypertarget{_iterator_8h_source}{}\label{_iterator_8h_source}\doxymbox{\hyperlink{_iterator_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#ifndef\ ITERATOR\_H}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#define\ ITERATOR\_H}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_node}{Node}};}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\doxymbox{\hyperlink{class_iterator_a7959a7227e71c2029fdbf1ad724ec669}{Iterator}}\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{explicit}\ \doxymbox{\hyperlink{class_iterator_a7959a7227e71c2029fdbf1ad724ec669}{Iterator}}(\doxymbox{\hyperlink{class_node}{Node}}*\ current\ =\ \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_iterator_aa92eeafc1e1868f8e5cd9f2f7f2a9054}{hasNext}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \doxymbox{\hyperlink{class_iterator_aa905f515e31d556e0a1534dc794751fa}{hasPrevious}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_iterator_a9fdb7d1f5e9aae372c2bac7b3fbfb7f3}{next}}();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ \doxymbox{\hyperlink{class_iterator_a3633a85ec1b975f2d37bfeb74012f6f5}{previous}}();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ \doxymbox{\hyperlink{class_iterator_a1472f6339e97195af82728033affe304}{set}}(\doxymbox{\hyperlink{class_node}{Node}}*\ node);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \doxymbox{\hyperlink{class_node}{Node}}*\ current;\ }
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}
