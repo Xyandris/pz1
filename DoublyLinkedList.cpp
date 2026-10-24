@@ -1,3 +1,7 @@
+/**
+ * @file DoublyLinkedList.cpp
+ * @brief Implementacja operacji listy dwukierunkowej.
+ */
 #include "DoublyLinkedList.h"
 #include "Node.h"
 #include <iostream>
@@ -6,87 +10,224 @@
 DoublyLinkedList::DoublyLinkedList()
     : head(nullptr), tail(nullptr), cursor(nullptr), count(0) {}
 
-DoublyLinkedList::~DoublyLinkedList() { clear(); }
+DoublyLinkedList::~DoublyLinkedList() {
+    clear();
+}
 
 void DoublyLinkedList::addFront(int value) {
-    // TODO 1/2: utwórz węzeł i popraw wskaźniki head/tail.
     Node* node = new Node(value);
     node->next = head;
-    if (head) head->prev = node;
-    else tail = node;
+
+    if (head) {
+        head->prev = node;
+    } else {
+        tail = node;
+    }
+
     head = node;
     ++count;
 }
 
 void DoublyLinkedList::addBack(int value) {
-    // TODO: zaimplementuj dodawanie na koniec listy.
+    Node* node = new Node(value);
+    node->prev = tail;
+
+    if (tail) {
+        tail->next = node;
+    } else {
+        head = node;
+    }
+
+    tail = node;
+    ++count;
 }
 
 void DoublyLinkedList::insertAt(std::size_t index, int value) {
-    // TODO: sprawdź zakres i obsłuż wstawianie na początku, końcu oraz w środku.
-    (void)index; (void)value;
+    if (index > count) {
+        throw std::out_of_range("Indeks poza zakresem listy.");
+    }
+
+    if (index == 0) {
+        addFront(value);
+        return;
+    }
+
+    if (index == count) {
+        addBack(value);
+        return;
+    }
+
+    Node* nextNode = nodeAt(index);
+    Node* prevNode = nextNode->prev;
+    Node* node = new Node(value);
+
+    node->prev = prevNode;
+    node->next = nextNode;
+    prevNode->next = node;
+    nextNode->prev = node;
+    ++count;
 }
 
 bool DoublyLinkedList::removeFront() {
-    // TODO: usuń pierwszy węzeł i popraw head/tail.
-    return false;
+    if (!head) {
+        return false;
+    }
+
+    Node* oldHead = head;
+    head = head->next;
+
+    if (head) {
+        head->prev = nullptr;
+    } else {
+        tail = nullptr;
+    }
+
+    delete oldHead;
+    --count;
+    return true;
 }
 
 bool DoublyLinkedList::removeBack() {
-    // TODO: usuń ostatni węzeł i popraw head/tail.
-    return false;
+    if (!tail) {
+        return false;
+    }
+
+    Node* oldTail = tail;
+    tail = tail->prev;
+
+    if (tail) {
+        tail->next = nullptr;
+    } else {
+        head = nullptr;
+    }
+
+    delete oldTail;
+    --count;
+    return true;
 }
 
 bool DoublyLinkedList::removeAt(std::size_t index) {
-    // TODO: znajdź węzeł i usuń go, zachowując spójność wskaźników.
-    (void)index;
-    return false;
+    if (index >= count) {
+        return false;
+    }
+
+    if (index == 0) {
+        return removeFront();
+    }
+
+    if (index == count - 1) {
+        return removeBack();
+    }
+
+    Node* node = nodeAt(index);
+    node->prev->next = node->next;
+    node->next->prev = node->prev;
+    delete node;
+    --count;
+    return true;
 }
 
 void DoublyLinkedList::displayForward() const {
-    // TODO: wypisz elementy od head do tail.
+    std::cout << "Lista od poczatku: ";
+    Node* current = head;
+
+    while (current) {
+        std::cout << current->value;
+        if (current->next) std::cout << " <-> ";
+        current = current->next;
+    }
+
+    if (!head) std::cout << "(pusta)";
+    std::cout << '\n';
 }
 
 void DoublyLinkedList::displayBackward() const {
-    // TODO: wypisz elementy od tail do head.
+    std::cout << "Lista od konca: ";
+    Node* current = tail;
+
+    while (current) {
+        std::cout << current->value;
+        if (current->prev) std::cout << " <-> ";
+        current = current->prev;
+    }
+
+    if (!tail) std::cout << "(pusta)";
+    std::cout << '\n';
 }
 
 bool DoublyLinkedList::showNext() {
-    // TODO: przejdź kursorem do następnego elementu i wyświetl jego wartość.
-    return false;
+    if (!cursor) cursor = head;
+    else cursor = cursor->next;
+
+    if (!cursor) {
+        std::cout << "Brak nastepnego elementu.\\n";
+        return false;
+    }
+
+    std::cout << "Nastepny element: " << cursor->value << '\n';
+    return true;
 }
 
 bool DoublyLinkedList::showPrevious() {
-    // TODO: przejdź kursorem do poprzedniego elementu i wyświetl jego wartość.
-    return false;
+    if (!cursor) cursor = tail;
+    else cursor = cursor->prev;
+
+    if (!cursor) {
+        std::cout << "Brak poprzedniego elementu.\\n";
+        return false;
+    }
+
+    std::cout << "Poprzedni element: " << cursor->value << '\n';
+    return true;
 }
 
 void DoublyLinkedList::clear() {
     Node* current = head;
+
     while (current) {
         Node* next = current->next;
         delete current;
         current = next;
     }
-    head = tail = cursor = nullptr;
+
+    head = nullptr;
+    tail = nullptr;
+    cursor = nullptr;
     count = 0;
 }
 
-std::size_t DoublyLinkedList::size() const { return count; }
-bool DoublyLinkedList::empty() const { return count == 0; }
+std::size_t DoublyLinkedList::size() const {
+    return count;
+}
+
+bool DoublyLinkedList::empty() const {
+    return count == 0;
+}
 
 Iterator DoublyLinkedList::iteratorFromFront() const {
-    // TODO: zwróć iterator wskazujący na pierwszy element.
-    return Iterator();
+    return Iterator(head);
 }
 
 Iterator DoublyLinkedList::iteratorFromBack() const {
-    // TODO: zwróć iterator wskazujący na ostatni element.
-    return Iterator();
+    return Iterator(tail);
 }
 
 Node* DoublyLinkedList::nodeAt(std::size_t index) const {
-    // TODO: zaimplementuj wyszukiwanie od bliższego końca listy.
-    (void)index;
-    return nullptr;
+    if (index >= count) {
+        throw std::out_of_range("Indeks poza zakresem listy.");
+    }
+
+    if (index < count / 2) {
+        Node* current = head;
+        for (std::size_t i = 0; i < index; ++i) {
+            current = current->next;
+        }
+        return current;
+    }
+
+    Node* current = tail;
+    for (std::size_t i = count - 1; i > index; --i) {
+        current = current->prev;
+    }
+    return current;
 }
