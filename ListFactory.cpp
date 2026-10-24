@@ -1,3 +1,7 @@
+/**
+ * @file ListFactory.cpp
+ * @brief Implementacja fabryki listy.
+ */
 #include "ListFactory.h"
 #include "DoublyLinkedList.h"
 
